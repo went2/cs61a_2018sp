@@ -60,14 +60,12 @@ test = {
           >>> # Play function stops at goal
           >>> s0, s1 = hog.play(always(5), always(3), score0=91, score1=10, dice=always_three)
           >>> s0
-          17a90ac6d84565b47483000c22f1f6de
-          # locked
+          106
           >>> s1
-          70e71b420a966665c548a3bb2cb30d7d
-          # locked
+          10
           """,
           'hidden': False,
-          'locked': True
+          'locked': False
         },
         {
           'code': r"""
@@ -75,14 +73,12 @@ test = {
           >>> # Goal score is not hardwired
           >>> s0, s1 = hog.play(always(5), always(5), goal=10, dice=always_three)
           >>> s0
-          af0b3285304485122429774c0ea3182a
-          # locked
+          15
           >>> s1
-          962aea5f59fc55bd65ccacf4603c8f22
-          # locked
+          0
           """,
           'hidden': False,
-          'locked': True
+          'locked': False
         }
       ],
       'scored': True,
@@ -105,14 +101,12 @@ test = {
           >>> strat1 = lambda score, opponent: score // 10
           >>> s0, s1 = hog.play(strat0, strat1, score0=41, score1=80, dice=always_three)
           >>> s0
-          54935d3cbce06ca8eb0a57a6afea0537
-          # locked
+          51
           >>> s1
-          f621c71db7ab839a79f1a0339b73b7d5
-          # locked
+          104
           """,
           'hidden': False,
-          'locked': True
+          'locked': False
         }
       ],
       'scored': True,
