@@ -102,9 +102,12 @@ def silence(score0, score1):
     """Announce nothing (see Phase 2)."""
     return silence
 
+def say_score(s0, s1):
+    print(s0, s1)
+    return say_score
 
 def play(strategy0, strategy1, score0=0, score1=0, dice=six_sided,
-         goal=GOAL_SCORE, say=silence):
+         goal=GOAL_SCORE, say=say_score):
     """Simulate a game and return the final scores of both players, with Player
     0's score first, and Player 1's score second.
 
@@ -136,13 +139,13 @@ def play(strategy0, strategy1, score0=0, score1=0, dice=six_sided,
             if is_swap(score0, score1):
                 score0, score1 = score1, score0
             player = 0
+        say = say(score0, score1)
     # END PROBLEM 5
     return score0, score1
 
 #######################
 # Phase 2: Commentary #
 #######################
-
 
 def say_scores(score0, score1):
     """A commentary function that announces the score for each player."""
@@ -209,7 +212,22 @@ def announce_highest(who, previous_high=0, previous_score=0):
     """
     assert who == 0 or who == 1, 'The who argument should indicate a player.'
     # BEGIN PROBLEM 7
-    "*** YOUR CODE HERE ***"
+    def say(score0, score1):
+        if who == 0:
+            score = score0
+        else:
+            score = score1
+        
+        change = abs(score-previous_score)
+        if score > previous_score and change > previous_high:
+            if score == 1:
+                print("1 point! That's the biggest gain yet for Player 1")
+            else:
+                print(change, "points! That's the biggest gain yet for Player", who)
+            return announce_highest(who, previous_high=change, previous_score=score)
+        else:
+            return announce_highest(who, previous_high=previous_high, previous_score = score)
+    return say
     # END PROBLEM 7
 
 
